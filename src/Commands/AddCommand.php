@@ -112,7 +112,7 @@ class AddCommand extends Command
         }
 
         file_put_contents($filename, $hookContents);
-        chmod($filename, 0755);
+        chmod($filename, 0o755);
 
         $operation = $exists ? 'Updated' : 'Added';
         $this->info("{$operation} [{$hook}] hook");
@@ -175,8 +175,8 @@ class AddCommand extends Command
         passthru("git config --global core.hooksPath {$globalHookDir}", $exitCode);
 
         if ($exitCode !== 0) {
-            $this->error("Could not set global git hook path.\n" .
-            " Try running this manually 'git config --global core.hooksPath {$globalHookDir}'");
+            $this->error("Could not set global git hook path.\n"
+            . " Try running this manually 'git config --global core.hooksPath {$globalHookDir}'");
             return;
         }
 

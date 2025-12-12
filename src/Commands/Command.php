@@ -55,9 +55,7 @@ abstract class Command extends SymfonyCommand
         return SymfonyCommand::SUCCESS;
     }
 
-    protected function global_dir_fallback()
-    {
-    }
+    protected function global_dir_fallback() {}
 
     protected function info($info)
     {

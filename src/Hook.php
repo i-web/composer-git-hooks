@@ -22,7 +22,7 @@ class Hook
     {
         if (is_array($contents)) {
             $commandsSequence = self::stopHookOnFailure($dir, $hook);
-            $separator = $commandsSequence ? ' && \\'.PHP_EOL : PHP_EOL;
+            $separator = $commandsSequence ? ' && \\' . PHP_EOL : PHP_EOL;
             $contents = implode($separator, $contents);
         }
 
@@ -40,7 +40,7 @@ class Hook
     public static function getConfig($dir, $section)
     {
         if (! in_array($section, self::CONFIG_SECTIONS)) {
-            throw new Exception("Invalid config section [{$section}]. Available sections: ".implode(', ', self::CONFIG_SECTIONS).'.');
+            throw new Exception("Invalid config section [{$section}]. Available sections: " . implode(', ', self::CONFIG_SECTIONS) . '.');
         }
 
         $json = self::getComposerJson($dir);
@@ -75,7 +75,7 @@ class Hook
     {
         $json = self::getComposerJson($dir);
 
-        $possibleHooks = isset($json['extra']['hooks']) ? $json['extra']['hooks'] : [];
+        $possibleHooks = $json['extra']['hooks'] ?? [];
 
         return array_filter($possibleHooks, function ($hook) use ($dir) {
             return self::isDefaultHook($hook) || self::isCustomHook($dir, $hook);
@@ -96,24 +96,24 @@ class Hook
     private static function getDefaultHooks()
     {
         return array_flip([
-           'applypatch-msg',
-           'commit-msg',
-           'post-applypatch',
-           'post-checkout',
-           'post-commit',
-           'post-merge',
-           'post-receive',
-           'post-rewrite',
-           'post-update',
-           'pre-applypatch',
-           'pre-auto-gc',
-           'pre-commit',
-           'pre-push',
-           'pre-rebase',
-           'pre-receive',
-           'prepare-commit-msg',
-           'push-to-checkout',
-           'update',
+            'applypatch-msg',
+            'commit-msg',
+            'post-applypatch',
+            'post-checkout',
+            'post-commit',
+            'post-merge',
+            'post-receive',
+            'post-rewrite',
+            'post-update',
+            'pre-applypatch',
+            'pre-auto-gc',
+            'pre-commit',
+            'pre-push',
+            'pre-rebase',
+            'pre-receive',
+            'prepare-commit-msg',
+            'push-to-checkout',
+            'update',
         ]);
     }
 
