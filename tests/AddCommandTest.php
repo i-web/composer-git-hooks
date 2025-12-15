@@ -168,7 +168,7 @@ class AddCommandTest extends TestCase
         $hookFile = $currentDir . '/../' . $lockDir . '/' . Hook::LOCK_FILE;
         $this->commandTester->execute(['--lock-dir' => dirname($hookFile)], ['verbosity' => OutputInterface::VERBOSITY_VERBOSE]);
 
-        $this->assertStringContainsString('Created '. $hookFile . ' file', $this->commandTester->getDisplay());
+        $this->assertStringContainsString('Created ' . $hookFile . ' file', $this->commandTester->getDisplay());
         $this->assertFileExists($hookFile);
         $this->assertEquals(json_encode(array_keys(self::$hooks)), file_get_contents($hookFile));
         self::rmdir('../' . $lockDir);
@@ -324,15 +324,15 @@ class AddCommandTest extends TestCase
         $this->commandTester->execute([]);
 
         $content = file_get_contents(".git/hooks/pre-commit");
-        $expected = 'echo "pre-commit 1" && \\'. PHP_EOL.
-                'echo "pre-commit 2" && \\'. PHP_EOL.
-                'echo "pre-commit 3"';
+        $expected = 'echo "pre-commit 1" && \\' . PHP_EOL
+                . 'echo "pre-commit 2" && \\' . PHP_EOL
+                . 'echo "pre-commit 3"';
         $this->assertStringContainsString($expected, $content);
 
         $content = file_get_contents(".git/hooks/post-commit");
-        $expected = 'echo "post-commit 1"'. PHP_EOL.
-                'echo "post-commit 2"'. PHP_EOL.
-                'echo "post-commit 3"';
+        $expected = 'echo "post-commit 1"' . PHP_EOL
+                . 'echo "post-commit 2"' . PHP_EOL
+                . 'echo "post-commit 3"';
         $this->assertStringContainsString($expected, $content);
     }
 

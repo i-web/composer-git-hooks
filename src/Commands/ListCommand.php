@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\InputOption;
 
 class ListCommand extends Command
 {
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('list-hooks')
@@ -19,9 +19,7 @@ class ListCommand extends Command
         ;
     }
 
-    protected function init(InputInterface $input)
-    {
-    }
+    protected function init(InputInterface $input) {}
 
     protected function command()
     {

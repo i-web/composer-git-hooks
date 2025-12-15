@@ -41,9 +41,7 @@ abstract class TestCase extends PHPUnitTestCase
         $this->restoreGlobalHookDir();
     }
 
-    protected function init()
-    {
-    }
+    protected function init() {}
 
     public static function createHooks($gitDir = '.git', $createLockFile = false, $lockDir = false)
     {

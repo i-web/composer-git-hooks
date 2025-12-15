@@ -28,7 +28,7 @@ class HookCommandTest extends TestCase
         $hook = [
             'pre-commit' => [
                 'echo execution-error;exit 1',
-                'echo before-commit'
+                'echo before-commit',
             ],
         ];
 

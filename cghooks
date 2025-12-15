@@ -22,15 +22,15 @@ use BrainMaestro\GitHooks\Commands\ListCommand;
 use BrainMaestro\GitHooks\Commands\HookCommand;
 use Symfony\Component\Console\Application;
 
-$application = new Application('Composer Git Hooks', '3.0.0');
+$application = new Application('Composer Git Hooks', '4.0.0');
 
-$application->add(new AddCommand());
-$application->add(new UpdateCommand());
-$application->add(new RemoveCommand());
-$application->add(new ListCommand());
+$application->addCommand(new AddCommand());
+$application->addCommand(new UpdateCommand());
+$application->addCommand(new RemoveCommand());
+$application->addCommand(new ListCommand());
 
 foreach (Hook::getValidHooks($dir) as $hook => $script) {
-    $application->add(new HookCommand($hook, $script, $dir));
+    $application->addCommand(new HookCommand($hook, $script, $dir));
 }
 
 $application->run();
